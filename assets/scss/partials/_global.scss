@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800;900&display=swap');
+body {
+  color: $theme-dark;
+  background: $theme-light;
+  background: url('../../assets/images/7.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 0 0;
+  margin: 0;
+  font-family: 'Catamaran', sans-serif;
+}
+#logo {
+  z-index: 99;
+  align-items: baseline;
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  opacity: 0.2;
+  img {
+    height: 60px;
+    filter: invert(1);
+    transform: translateY(30px);
+  }
+  p {
+    padding-left: 3px;
+    color: white;
+  }
+}
