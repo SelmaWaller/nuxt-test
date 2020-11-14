@@ -1,18 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@400;500&display=swap$display=swap');
 body {
+  -webkit-user-select: none;
   color: $theme-dark;
   background: $theme-light;
-  background: url('../../assets/images/7.jpg');
+  background: url('../../assets/images/1.png');
   background-attachment: fixed;
   background-size: cover;
   background-position: 0 0;
   margin: 0;
   font-family: 'Catamaran', sans-serif;
 }
+img {
+  -webkit-user-drag: none;
+}
 #logo {
   z-index: 99;
   align-items: baseline;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 20px;
   opacity: 0.2;
@@ -24,5 +28,72 @@ body {
   p {
     padding-left: 3px;
     color: white;
+  }
+}
+.content {
+  width: 100%;
+  position: absolute;
+  top: 52px;
+  z-index: 1;
+  animation: blurIn 150ms ease-in-out;
+  &__menu {
+    animation: fadeOut 150ms ease-in-out;
+    -webkit-filter: blur(15px);
+    filter: blur(15px);
+  }
+}
+.card {
+  margin-top: 52px;
+  padding: 20px;
+  box-shadow: $theme-shadow;
+  background: #ffffffcc;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 600px;
+  margin: 40px;
+  min-height: 100px;
+  height: 100%;
+  position: relative;
+  h2 {
+    margin-top: 0;
+  }
+}
+input {
+  border: none;
+  -webkit-appearance: none;
+  background: white;
+  padding: 5px 10px;
+}
+.filter__main {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../assets/images/1.png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 0 0;
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+  z-index: -99;
+  &--background {
+    z-index: -99;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba($theme-light, 0.15);
+  }
+}
+.flex-block {
+  display: flex;
+  justify-content: center;
+  margin: 40px auto;
+  @media screen and(max-width: 720px) {
+    display: block;
   }
 }

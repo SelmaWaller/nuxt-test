@@ -7,26 +7,11 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  animation: closeMenu 250ms ease-in-out;
-  @keyframes closeMenu {
-    from {
-      height: 100vh;
-    }
-    to {
-      height: 52px;
-    }
-  }
+  z-index: 99;
   &__open {
-    animation: openMenu 250ms ease-in-out;
+    z-index: 99;
+    animation: fadeIn 250ms ease-in-out;
     height: 100vh;
-    @keyframes openMenu {
-      from {
-        height: 70px;
-      }
-      to {
-        height: 100vh;
-      }
-    }
   }
   &__content {
     background: rgba($theme-light, 0.15);
@@ -52,17 +37,6 @@
       &:hover {
         opacity: 1;
         cursor: pointer;
-        @keyframes pulse {
-          0% {
-            transform: scale(1);
-          }
-          75% {
-            transform: scale(1.1);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
       }
     }
   }
@@ -74,18 +48,17 @@
     left: -100px;
     width: 200%;
     height: 100%;
-    background-image: url('../../assets/images/7.jpg');
+    background-image: url('../../assets/images/1.png');
     background-attachment: fixed;
     background-size: cover;
     background-position: 0 0;
     opacity: 1;
-    -webkit-filter: blur(5px);
-    filter: blur(5px);
-    z-index: -99;
+    -webkit-filter: blur(15px);
+    filter: blur(15px);
   }
 }
 .login {
-  background: rgba(229, 225, 245, 0.15);
+  background: rgba($theme-light, 0.15);
   height: 100%;
   top: 52px;
   position: fixed;
@@ -93,40 +66,54 @@
   align-items: center;
   justify-content: center;
   display: flex;
-  animation: openMenu 250ms ease-in-out;
-  &__form {
-    margin-top: -10%;
+  z-index: 2;
+  animation: fadeIn 250ms ease-in-out;
+  &__content {
+    display: flex;
     opacity: 1;
+    margin-top: -150px;
     animation: fadeIn 250ms ease-in-out;
-    @keyframes fadeIn {
-      0%,
-      30% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
+    z-index: 99;
+    overflow: hidden;
+    max-width: 800px;
+    border: 1px solid $theme-light;
+    max-height: 500px;
+    p {
+      margin-bottom: 0;
+    }
+    &--form {
+      padding: 20px;
+      background: linear-gradient(to top right, #ffdcdc, #b4d8ff);
+    }
+    &--image {
+      width: 100%;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      img {
+        height: 100%;
       }
     }
   }
   &__close {
-    height: 0%;
-    animation: closeMenu 250ms ease-in-out;
-    .login__form {
+    height: 100%;
+    top: 52px;
+    position: fixed;
+    width: 100%;
+    animation: fadeOut 250ms ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+    .login__content {
       animation: fadeOut 250ms ease-in-out;
       opacity: 0;
       pointer-events: none;
-      @keyframes fadeOut {
-        0% {
-          opacity: 1;
-        }
-        30%,
-        100% {
-          opacity: 0;
-        }
-      }
-      img {
-        pointer-events: none;
-      }
     }
+  }
+  &__cancel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
   }
 }

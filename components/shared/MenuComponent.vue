@@ -11,7 +11,7 @@
         </li>
         <li>
           <img
-            @click="menuOpen = !menuOpen"
+            @click="toggleMenu"
             :src="
               loggedIn
                 ? require(`~/assets/icons/logout.svg`)
@@ -27,30 +27,32 @@
         </li>
       </ul>
     </div>
-    <div
-      :class="menuOpen ? 'login' : 'login login__close'"
-      :style="
-        !menuOpen
-          ? 'animation: closeMenu 250ms ease-in-out;'
-          : 'animation: openMenu 250ms ease-in-out;'
-      "
-    >
-      <div class="login__form">
-        <div>
-          <img :src="require(`~/assets/icons/logo.png`)" alt="logo" />
+    <div v-show="menuOpen" :class="menuOpen ? 'login' : 'login login__close'">
+      <div class="login__cancel" @click="toggleMenu"></div>
+      <div class="login__content">
+        <div class="login__content--form">
+          <div>
+            <img :src="require(`~/assets/icons/logo.png`)" alt="logo" />
+          </div>
+          <div>
+            <h3>Login</h3>
+          </div>
+          <div>
+            <p>Username</p>
+            <input />
+          </div>
+          <div>
+            <p>Password</p>
+            <input type="password" />
+          </div>
         </div>
-        <div>
-          <h3>Login</h3>
-        </div>
-        <div>
-          <p>Username</p>
-          <input />
-        </div>
-        <div>
-          <p>Password</p>
-          <input />
+        <div class="login__content--image">
+          <img :src="require(`~/assets/images/3.png`)" alt="image" />
         </div>
       </div>
+    </div>
+    <div class="content content__menu">
+      <Nuxt />
     </div>
     <div class="filter"></div>
   </div>
@@ -58,9 +60,20 @@
 <script>
 export default {
   name: 'MenuComponent',
-  data: () => ({
-    menuOpen: true,
-    loggedIn: false,
-  }),
+  props: {
+    menuOpen: {
+      type: Boolean,
+      default: false,
+    },
+    loggedIn: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  methods: {
+    toggleMenu() {
+      this.$emit('toggle-menu')
+    },
+  },
 }
 </script>
